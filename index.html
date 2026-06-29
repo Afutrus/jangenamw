@@ -451,6 +451,43 @@
     color:#fff;
     font-size:13px;
 }
+
+.pilihan-bongkar{
+    display:flex;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.bongkar-card{
+    flex:1;
+    background:rgba(255,255,255,.05);
+    border:2px solid rgba(255,255,255,.15);
+    border-radius:15px;
+    padding:10px;
+    cursor:pointer;
+    text-align:center;
+    transition:.25s;
+}
+
+.bongkar-card img{
+    width:100%;
+    border-radius:10px;
+    display:block;
+}
+
+.bongkar-card span{
+    display:block;
+    margin-top:8px;
+    color:#fff;
+    font-weight:700;
+    font-size:13px;
+}
+
+.bongkar-card.active{
+    border-color:#ffcc33;
+    box-shadow:0 0 15px rgba(255,204,51,.45);
+    transform:scale(1.03);
+}
     </style>
 </head>
 <body>
@@ -462,7 +499,7 @@
             <h1>ADMIN RESMI BONGKAR</h1>
         </div>
 
-        <img src="img/bgbos1.png" alt="Promo" class="promo-img">
+        <img src="bgbos1.png" alt="Promo" class="promo-img">
 
         <div class="nav-links">
             <a href="https://youtu.be/rxUHXhwJzXc?si=2D8G3RkyEFypnwqF" target="_blank" class="btn-action">
@@ -854,6 +891,20 @@ function showNotice(){
 function closeNotice(){
     document.getElementById('modalNotice').style.display='none';
 }
+
+const cards = document.querySelectorAll(".bongkar-card");
+const jenisInput = document.getElementById("jenisBongkar");
+
+cards.forEach(card=>{
+    card.addEventListener("click",()=>{
+
+        cards.forEach(c=>c.classList.remove("active"));
+
+        card.classList.add("active");
+
+        jenisInput.value = card.dataset.value;
+    });
+});
     </script>
 </body>
 </html>
